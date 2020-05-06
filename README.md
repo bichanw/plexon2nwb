@@ -1,13 +1,11 @@
 # nwb
 
-[:rewind: Back to the projects list](../../README.md#ProjectsList)
 
-<!-- For information on how to write GitHub .md files see https://guides.github.com/features/mastering-markdown/ -->
-
-# Write full project title here
+# Linear Probe Attention Task
 
 ## Key Investigators
 
+Bichan Wu (Princeton University)
 <!-- - Investigator 1 (Affiliation)-->
 <!-- - Investigator 2 (Affiliation)-->
 
@@ -42,7 +40,7 @@
 <!--![Description of picture](Example2.jpg)-->
 
 ## Background and References
-
+Source code: https://github.com/Addisonbc/nwb
 <!--Use this space for information that may help people better understand your project, like links to papers, source code, or data ,e.g:-->
 <!-- - Source code: https://github.com/YourUser/YourRepository -->
 <!-- - Documentation: https://link.to.docs -->
