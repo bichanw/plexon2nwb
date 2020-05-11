@@ -43,8 +43,7 @@ Bichan Wu (Princeton University)
 <!--![Description of picture](Example2.jpg)-->
 
 ## Background and References
-Source code: https://github.com/Addisonbc/nwb
-
+Source code: https://github.com/Addisonbc/nwb  
 Plexon offline sdk: https://plexon.com/software-downloads/#software-downloads-SDKs
 <!--Use this space for information that may help people better understand your project, like links to papers, source code, or data ,e.g:-->
 <!-- - Source code: https://github.com/YourUser/YourRepository -->
