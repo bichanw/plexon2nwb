@@ -14,7 +14,7 @@ Bichan Wu (Princeton University)
 <!-- Add a short paragraph describing the project. -->
 
 ## Objectives
-
+- Learn how to convert plexon data into NWB
 <!-- Briefly describe the objectives of your project. What would you like to achive?-->
 
 <!-- 1. Objective A. Describe it in 1-2 sentences.-->
@@ -23,6 +23,8 @@ Bichan Wu (Princeton University)
 
 ## Approach and Plan
 1. Learn about the basic structure of NWB
+2. convert sample session into NWB data
+3. Test reading using pyNWB and matNWB
 <!-- 1. Describe the steps of your planned approach to reach the objectives.-->
 <!-- 1. ... -->
 <!-- 1. ... -->
@@ -42,6 +44,7 @@ Bichan Wu (Princeton University)
 
 ## Background and References
 Source code: https://github.com/Addisonbc/nwb
+Plexon offline sdk: https://plexon.com/software-downloads/#software-downloads-SDKs
 <!--Use this space for information that may help people better understand your project, like links to papers, source code, or data ,e.g:-->
 <!-- - Source code: https://github.com/YourUser/YourRepository -->
 <!-- - Documentation: https://link.to.docs -->
