@@ -1,1 +1,0 @@
-function ad = read_ad(OpenedFileName)
