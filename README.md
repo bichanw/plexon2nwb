@@ -1,7 +1,7 @@
 # nwb
 
 
-# Linear Probe Attention Task
+# Conversion of Kastner lab dataset from Plexon to NWB
 
 ## Key Investigators
 
