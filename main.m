@@ -1,3 +1,5 @@
+% initiation
+clear;clc;addpath(genpath(pwd));
 
 % input experiment info manually
 info_manual;
