@@ -20,7 +20,12 @@ nwbExport(nwb, '/Users/bichanwu/Desktop/nwb workshop/nwb/ecephys_tutorial1.nwb')
 % skip trials at this moment, add from manoj's data later
 
 % electrodes
-nwb = plexon2nwb.gen_electrode_table(nwb,electrode_info,device_info);
+nwb = read_plexon.gen_electrode_table(nwb,electrode_info,device_info);
 
 % read voltage info
-nwb = plexon2nwb.read_ad(nwb,electrode_info,pl2_raw);
+% nwb = read_plexon.read_ad(nwb,electrode_info,pl2_raw);
+
+% spike
+nwb = read_plexon.read_spkc(nwb,pl2_path);
+
+% events

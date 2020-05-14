@@ -3,7 +3,8 @@
 
 % plexon data file path
 pl2_path.raw  = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
-pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_02142019_UA.pl2';
+pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
+% pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_02142019_UA.pl2';
 
 % session 
 session_info.session_description  = '.';
