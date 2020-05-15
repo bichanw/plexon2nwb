@@ -2,15 +2,16 @@
 % this part cannot be done by automization
 
 % plexon data file path
-pl2_path.raw  = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
-pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
-% pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_02142019_UA.pl2';
+pl2_path.raw = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_03082019_UA.pl2';
+pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_03082019_UA.pl2';
+
 
 % session 
 session_info.session_description  = '.';
 session_info.identifier			 = '.';
 session_info.session_start_time   = datetime(2000,1,1,1,1,1);
-session_info.general_experimenter = '.';
+session_info.general_experimenter = {'input later'};
+session_info.general_experiment_description = '.';
 session_info.general_session_id   = '.';
 session_info.general_institution  = '.';
 
@@ -39,10 +40,17 @@ device_info.manufacturer = 'Plexon';
 
 
 % electrodes
-electrode_info.nshanks = 3;
-electrode_info.nchannels_per_shank = 32;
-electrode_info.RegionNames = {'SC','.','.'}; 
+electrode_info.nprobes = 4;
+electrode_info.nchannels_per_probe = 32;
+% electrode_info.RegionNames = {'SC','.','.'}; 
+electrode_info.RegionNames = {'V4','LIP','mdPul','entorhinal'}; 
 % make sure region names match nshansk
-if numel(electrode_info.RegionNames)~= electrode_info.nshanks
+if numel(electrode_info.RegionNames)~= electrode_info.nprobes
 	error('Region number must match shank number.');
 end
+% !!! need to add an option of electrode table here
+
+
+% optional, name events
+% event_info = []; % leave empty if do not wish to name events
+event_info.names = {'fix','bar','cue','tar','resp','reward'};

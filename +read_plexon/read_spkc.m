@@ -36,11 +36,8 @@ nwb.units.spike_times_index = spike_times_index;
 % electrode
 % generate objectview of the multielectrodes recording
 electrodes_object_view = types.untyped.ObjectView('/general/extracellular_ephys/electrodes');
-electrode_table_region = types.hdmf_common.DynamicTableRegion('table', electrodes_object_view, 'description', 'all electrodes', 'data', [0 numel(nwb.general_extracellular_ephys_electrodes.vectordata.get('group').data)-1]');
-% reference unit to channel
-[electrodes, electrodes_index] = util.create_indexed_column(num2cell(Units_plexon.channel - 1), '/units/electrodes', [], [], electrodes_object_view);
-nwb.units.electrodes = electrodes; % 0 index match electrode group
-
+% reference units to electrodes
+nwb.units.electrodes = types.hdmf_common.DynamicTableRegion('table', electrodes_object_view,'description', 'single electrodes','data', int64(Units_plexon.channel - 1));
 
 % waveform
 waveform_mean = types.hdmf_common.VectorData('data', vertcat(Units_plexon.wave{:})','description', 'mean of waveform');
