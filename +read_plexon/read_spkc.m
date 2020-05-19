@@ -1,5 +1,6 @@
 function nwb = read_spkc(nwb,pl2_path)
 
+% read spike from .pl2 file
 Units_plexon = read_spikes(pl2_path.raw);
 NUnits = numel(Units_plexon.channel);
 
@@ -98,7 +99,7 @@ function Units = read_spikes(OpenedFileName)
 			if ~isempty(allts{iunit,ich})
 				NNeurons = NNeurons + 1;
 				Units.channel(NNeurons) = ich;
-				Units.spike_time{NNeurons} = int64(allts{iunit,ich} * 1000)'; % s to ms
+				Units.spike_time{NNeurons} = allts{iunit,ich}'; % in second
 				Units.wave{NNeurons} = mean(wave{iunit,ich}.Waves,1);
 			end
 		end

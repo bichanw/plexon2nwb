@@ -11,10 +11,11 @@ Bichan Wu (Princeton University)
 
 ## Project Description
 
+- convert extracellular electrophysiology data recorded by Plexon recording system to NWB data format
 <!-- Add a short paragraph describing the project. -->
 
 ## Objectives
-- Learn how to convert plexon data into NWB
+- Create a package that will convert .pl2 file, which usually inludes ecephys spike data, LFP data, experiment event data into a full NWB file.
 <!-- Briefly describe the objectives of your project. What would you like to achive?-->
 
 <!-- 1. Objective A. Describe it in 1-2 sentences.-->
@@ -28,12 +29,6 @@ Bichan Wu (Princeton University)
 <!-- 1. Describe the steps of your planned approach to reach the objectives.-->
 <!-- 1. ... -->
 <!-- 1. ... -->
-
-## Progress and Next Steps
-- added files that read events, spikes from Plexon file
-<!--Populate this section as you are making progress before/during/after the hackathon-->
-<!--Describe the progress you have made on the project,e.g., which objectives you have achieved and how.-->
-<!--Describe the next steps you are planing to take to complete the project.-->
 
 ## Materials
 - Code: https://github.com/Addisonbc/nwb

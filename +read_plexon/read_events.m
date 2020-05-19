@@ -3,7 +3,8 @@ function nwb = read_events(nwb,pl2_path,event_info)
 eventmat = read_pl2_events(pl2_path.raw);
 
 % convert all time points to a trial-structured matrix
-trialmat = codes2trials(eventmat,[1 14 35 48]);
+trialmat = codes2trials(eventmat,event_info.trial_start_code);
+trialmat.time = double(trialmat.time) / 1000;
 
 % trial start and stop
 start_time = trialmat.time(:,1);
@@ -28,7 +29,7 @@ trials = types.core.TimeIntervals(...
 % 
 
 for iEvent = 1:size(trialmat.code,2)
-	if isempty(event_info)
+	if isempty(event_info.names)
 		name_time = ['event' num2str(iEvent) '_time'];
 		name_code = ['event' num2str(iEvent) '_code'];
 	else
@@ -51,8 +52,11 @@ function Trials = codes2trials(eventmatT,code_trial_start)
 % each row represent a trial
 % 
 
+    % if start code not defined, treat every event as an individual trial
 	if nargin<2 || isempty(code_trial_start)
-		code_trial_start = [1 14 35 48]; % default in our experiment
+		Trials.time = eventmatT.times;
+        Trials.code = eventmatT.code;
+        return
 	end
 
 	% initiation
@@ -68,6 +72,7 @@ function Trials = codes2trials(eventmatT,code_trial_start)
 		code = eventmatT.code(iCode);
 		time = int64(eventmatT.times(iCode));
 
+        
 		% trial onset with fixation
 		if ismember(code,code_trial_start)
 			NTrials = NTrials + 1;
@@ -77,11 +82,13 @@ function Trials = codes2trials(eventmatT,code_trial_start)
                 Trials.time = [Trials.time; nan(1e3,100)];
             end
 			iCode_in_trial = 1;
+            
 		% other events
 		else
 			iCode_in_trial = iCode_in_trial + 1;
-		end
+        end
 
+        
 		Trials.code(NTrials,iCode_in_trial) = code;
 		Trials.time(NTrials,iCode_in_trial) = time;
 

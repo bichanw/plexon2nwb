@@ -1,22 +1,25 @@
 % manually input experiment info
 % this part cannot be done by automization
 
-% plexon data file path
+%% plexon data file path
 pl2_path.raw = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_03082019_UA.pl2';
+% pl2_path.LFP = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
+% pl2_path.raw = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
+% pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
 pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_03082019_UA.pl2';
 
 
-% session 
+%% session 
 session_info.session_description  = '.';
 session_info.identifier			 = '.';
 session_info.session_start_time   = datetime(2000,1,1,1,1,1);
-session_info.general_experimenter = {'input later'};
+session_info.general_experimenter = {'.'};
 session_info.general_experiment_description = '.';
 session_info.general_session_id   = '.';
 session_info.general_institution  = '.';
 
 
-% subject
+%% subject
 subject_info.subject_id	 = '.';
 subject_info.age 		 = '.';
 subject_info.description = '.';
@@ -34,23 +37,27 @@ subject_info.sex 		 = '.';
 % weight; % Weight at time of experiment, at time of surgery and at other important times.
 
 
-% recording device
+%% recording device
 device_info.description  = '32 channel linear array';
 device_info.manufacturer = 'Plexon';
 
 
-% electrodes
+%% electrodes
 electrode_info.nprobes = 4;
 electrode_info.nchannels_per_probe = 32;
-% electrode_info.RegionNames = {'SC','.','.'}; 
 electrode_info.RegionNames = {'V4','LIP','mdPul','entorhinal'}; 
 % make sure region names match nshansk
 if numel(electrode_info.RegionNames)~= electrode_info.nprobes
 	error('Region number must match shank number.');
 end
-% !!! need to add an option of electrode table here
+% !!! need to add an option of electrode table here ?
 
 
-% optional, name events
-% event_info = []; % leave empty if do not wish to name events
-event_info.names = {'fix','bar','cue','tar','resp','reward'};
+%% LFP
+LFP_info.filterfreq = [0.5 300]; % filtering frequency
+
+
+
+%% event / trial
+event_info.trial_start_code = [1 14 35 48]; % which codes correspond to the start of trials 
+event_info.names = {'fix','bar','cue','tar','resp','reward'}; % leave empty if do not wish to name events

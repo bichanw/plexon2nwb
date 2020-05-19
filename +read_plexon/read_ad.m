@@ -1,20 +1,20 @@
-function nwb = read_ad(nwb,electrode_info,pl2)
+function nwb = read_ad(nwb,electrode_info,pl2_path)
 
 electrodes_object_view = types.untyped.ObjectView('/general/extracellular_ephys/electrodes');
 
-for iShank = 1:electrode_info.nshanks
+for iProbe = 1:electrode_info.nprobes
 
 	% channels number in region
-    channelIDs = (1:electrode_info.nchannels_per_shank)+(iShank-1)*electrode_info.nchannels_per_shank;
+    channelIDs = (1:electrode_info.nchannels_per_probe)+(iProbe-1)*electrode_info.nchannels_per_probe;
     
     % reference to electrode table
     electrode_table_region = types.hdmf_common.DynamicTableRegion( ...
 						    'table', electrodes_object_view, ...
-						    'description', electrode_info.RegionNames{iShank}, ...
+						    'description', electrode_info.RegionNames{iProbe}, ...
 						    'data', (channelIDs-1)');
 
     % load data
-    data = load_raw(pl2.FilePath,channelIDs);
+    data = load_raw(pl2_path.raw,channelIDs);
 
     % convert to nwb
 	electrical_series = types.core.ElectricalSeries( ...
@@ -23,7 +23,7 @@ for iShank = 1:electrode_info.nshanks
 	    'electrodes', electrode_table_region, ...
 	    'data_unit', 'V');
 
-	nwb.acquisition.set(['shank' num2str(iShank)], electrical_series);
+	nwb.acquisition.set(['probe' num2str(iProbe)], electrical_series);
 
 end
 
