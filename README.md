@@ -1,7 +1,4 @@
-# nwb
-
-
-# Conversion of Kastner lab dataset from Plexon to NWB
+# Conversion of dataset from Plexon to NWB
 
 ## Key Investigators
 

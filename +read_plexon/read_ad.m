@@ -14,14 +14,14 @@ for iProbe = 1:electrode_info.nprobes
 						    'data', (channelIDs-1)');
 
     % load data
-    data = load_raw(pl2_path.raw,channelIDs);
+    [data,freq] = load_raw(pl2_path.raw,channelIDs);
 
     % convert to nwb
 	electrical_series = types.core.ElectricalSeries( ...
-	    'starting_time_rate', pl2.AnalogChannels{1}.SamplesPerSecond, ... % Hz
+	    'starting_time_rate', freq, ... % Hz
 	    'data', data, ...
 	    'electrodes', electrode_table_region, ...
-	    'data_unit', 'V');
+	    'data_unit', 'millivolts');
 
 	nwb.acquisition.set(['probe' num2str(iProbe)], electrical_series);
 
@@ -30,26 +30,31 @@ end
 end
 
 
-function rawData = load_raw(filename,channelIDs)
+function [rawData,freq] = load_raw(filename,channelIDs)
 
     [tscounts, wfcounts, evcounts, slowcounts] = plx_info(filename,1);
     [u,nslowchannels] = size( slowcounts );
     if ( nslowchannels > 0 )
         % 4 regions
         channels_with_data=find(slowcounts>0);
-        channels_with_data=channels_with_data-1; %subtract 1 because channel counting starts for 0
         
         for ich = channelIDs
-            [adfreq, n, ts, fn, adv] = plx_ad_v(filename,channels_with_data(ich));
+            ad  = PL2Ad(filename,channels_with_data(ich));
+            adv = ad.Values;
             
             %preallocate on the first round
             if find(ich==channelIDs)==1
-                rawData=zeros(numel(adv),numel(channelIDs),'int16');
+                rawData=zeros(numel(adv),numel(channelIDs),'double');
             end
-
-            rawData(:,ich==channelIDs) = int16(adv*1e3);
+            
+            
+            % save data to big mat
+            rawData(:,ich==channelIDs) = adv;
 
         end
+        
+        % save sampling frequency
+        freq = ad.ADFreq;
 
     end
 

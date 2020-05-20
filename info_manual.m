@@ -2,11 +2,11 @@
 % this part cannot be done by automization
 
 %% plexon data file path
-pl2_path.raw = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_03082019_UA.pl2';
-% pl2_path.LFP = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
-% pl2_path.raw = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
-% pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
-pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_03082019_UA.pl2';
+% pl2_path.raw = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_03082019_UA.pl2';
+pl2_path.LFP = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
+pl2_path.raw = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
+pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/fm1.pl2';
+% pl2_path.spkc = '/Users/bichanwu/Desktop/nwb workshop/Remy_RP_03082019_UA.pl2';
 
 
 %% session 
@@ -43,9 +43,10 @@ device_info.manufacturer = 'Plexon';
 
 
 %% electrodes
-electrode_info.nprobes = 4;
+electrode_info.nprobes = 3;
 electrode_info.nchannels_per_probe = 32;
-electrode_info.RegionNames = {'V4','LIP','mdPul','entorhinal'}; 
+% electrode_info.RegionNames = {'V4','LIP','mdPul','entorhinal'}; 
+electrode_info.RegionNames = {'SC','.','.'}; 
 % make sure region names match nshansk
 if numel(electrode_info.RegionNames)~= electrode_info.nprobes
 	error('Region number must match shank number.');

@@ -4,9 +4,6 @@ clear;clc;addpath(genpath(pwd));
 % input experiment info manually
 info_manual;
 
-% get pl2 info
-pl2_raw = PL2GetFileIndex(pl2_path.raw);
-
 % session
 eval(['nwb = NwbFile(' list_fields(session_info,'session_info') ');'])
 
@@ -17,13 +14,16 @@ eval(['nwb.general_subject = types.core.Subject(' list_fields(subject_info,'subj
 nwb = read_plexon.gen_electrode_table(nwb,electrode_info,device_info);
 
 % read voltage info
-% nwb = read_plexon.read_ad(nwb,electrode_info,pl2_raw);
+nwb = read_plexon.read_ad(nwb,electrode_info,pl2_path);
 
 % spike
 nwb = read_plexon.read_spkc(nwb,pl2_path);
 
 % events
 nwb = read_plexon.read_events(nwb,pl2_path,event_info);
+
+% LFP
+nwb = read_plexon.read_LFP(nwb,pl2_path,electrode_info,LFP_info);
 
 
 % test write
