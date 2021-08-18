@@ -1,8 +1,8 @@
 # Conversion of dataset from Plexon to NWB
 
 ## Key Investigators
-
-Bichan Wu (Princeton University)
+Sabine Kastner (PI, Princeton University)
+Bichan Wu (Research Specialist, Princeton University)
 <!-- - Investigator 1 (Affiliation)-->
 <!-- - Investigator 2 (Affiliation)-->
 
